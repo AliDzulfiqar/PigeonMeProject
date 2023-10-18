@@ -10,7 +10,7 @@ function App() {
 
   const joinRoom = () => {
     if (username !== "" && room !== ""){
-
+      socket.emit("join_room", room)
     }
   }
 
@@ -19,7 +19,7 @@ function App() {
       <h3>Join Chat</h3>
       <input type="text" placeholder="Name" onChange={(event) => setUsername(event.target.value)}/>
       <input type="text" placeholder="Room ID" onChange={(event) => setRoom(event.target.value)}/>
-      <button>Join Room</button>
+      <button onClick={joinRoom}>Join Room</button>
     </div>
   );
 }
