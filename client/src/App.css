@@ -6,17 +6,20 @@
 }
 
 .App {
+  max-width: 600px;
   display: flex;
   align-items: center;
-  max-width: 1200px;
+  justify-content: center;
 }
 
 #create-room {
   text-align: center;
+  display: flex;
+  flex-direction: column;
 }
 
 h1 {
-  font-size: 48px;
+  font-size: 40px;
 }
 
 
