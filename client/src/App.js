@@ -17,19 +17,23 @@ function App() {
 
   return (
     <div className="App">
-      <h3>Join Chat</h3>
-      <input
-        type="text"
-        placeholder="Name"
-        onChange={(event) => setUsername(event.target.value)}
-      />
-      <input
-        type="text"
-        placeholder="Room ID"
-        onChange={(event) => setRoom(event.target.value)}
-      />
-      <button onClick={joinRoom}>Join Room</button>
-      <Chat socket={socket} username={username} room={room} />
+      <section id="create-room">
+        <h1 className="create-room--header">Welcome to PigeonMe!</h1>
+        <div className="form-wrapper">
+          <input
+            type="text"
+            placeholder="Name"
+            onChange={(event) => setUsername(event.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Room ID"
+            onChange={(event) => setRoom(event.target.value)}
+          />
+          <button onClick={joinRoom}>Join Room</button>
+        </div>
+        <Chat socket={socket} username={username} room={room} />
+      </section>
     </div>
   );
 }
