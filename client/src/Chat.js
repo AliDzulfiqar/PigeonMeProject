@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 
-const Chat = (socket, username, room) => {
+function Chat({socket, username, room}) {
     const [currentMessage, SetCurrentMessage] = useState("");
-    const sendMessage = async () =>{
+
+    const sendMessage = async () => {
         if (currentMessage !== ""){
             const messageData = {
                 room: room,
                 sender: username,
                 message: currentMessage,
-                time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes()
-            }
-        }
+                time: new Date(Date.now()).getHours() + ":" + new Date(Date.now()).getMinutes(),
+            };
+
+            await socket.emit("send_message", messageData);
+        };
     }
+    
 
     return (
         <div>
@@ -23,7 +27,7 @@ const Chat = (socket, username, room) => {
                 <input type="text" placeholder='Send your message...' onChange={(event) => {
                     SetCurrentMessage(event.target.value);
                 }}/>
-                <button>Send</button>    
+                <button onClick={sendMessage}>Send</button>    
             </div> 
         </div>
     );
