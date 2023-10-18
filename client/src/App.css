@@ -32,7 +32,17 @@ textarea {
 }
 
 button {
-  border-radius: 10%;
+  width: 100%;
+  outline: none;
+  border: 1px solid;
+  margin: 2px;
+  height: 40px;
+  transition: all 300ms ease;
+  background-color: beige;
+}
+
+button:hover {
+  opacity: 70%;
 }
 
 .form-wrapper {
