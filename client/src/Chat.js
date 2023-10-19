@@ -23,12 +23,12 @@ function Chat({socket, username, room}) {
     }, [socket])
 
     return (
-        <div>
-            <div className="chat__header">
+        <div className='chat-window'>
+            <div className="chat-header">
                 <p>Chat Now!</p>
             </div>
-            <div className="chat__body"></div>
-            <div className="chat__footer">
+            <div className="chat-body"></div>
+            <div className="chat-footer">
                 <input type="text" placeholder='Send your message...' onChange={(event) => {
                     SetCurrentMessage(event.target.value);
                 }}/>
