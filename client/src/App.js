@@ -16,7 +16,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className="app">
       <section id="create-room">
         <h1 className="create-room--header">Welcome to PigeonMe!</h1>
         <div className="form-wrapper">
