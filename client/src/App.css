@@ -109,15 +109,15 @@ button:hover {
   word-break: break-word;
 }
 
-#other {
+#receiver {
   justify-content: flex-start;
 }
 
-#other .message-content {
+#receiver .message-content {
   justify-content: flex-start;
 }
 
-#other .message-meta {
+#receiver .message-meta {
   justify-content: flex-start;
   margin-left: 5px;
 }
@@ -136,7 +136,7 @@ button:hover {
   margin-right: 5px;
 }
 
-.message-meta #author {
+.message-meta #sender {
   margin-left: 10px;
   font-weight: bold;
 }

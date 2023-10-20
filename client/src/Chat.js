@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from 'react-scroll-to-bottom';
+import { v4 as uuidv4 } from 'uuid';
 
 function Chat({ socket, username, room }) {
   const [currentMessage, SetCurrentMessage] = useState("");
@@ -8,6 +9,7 @@ function Chat({ socket, username, room }) {
   const sendMessage = async () => {
     if (currentMessage !== "") {
       const messageData = {
+        id: uuidv4(),
         room: room,
         sender: username,
         message: currentMessage,
@@ -40,10 +42,10 @@ function Chat({ socket, username, room }) {
             return (
               <div
                 className="message"
-                id={username === messageContent.sender ? "sender" : "other"}
+                id={username === messageContent.sender ? "sender" : "receiver"}
               >
-                <div>
-                  <div className="message-content">
+                <div className="message-wrapper">
+                  <div className="message-content" key={messageContent.id}>
                     <p>{messageContent.message}</p>
                   </div>
                   <div className="message-meta">
@@ -51,7 +53,7 @@ function Chat({ socket, username, room }) {
                     <p id="sender">{messageContent.sender}</p>
                   </div>
                 </div>
-              </div>
+                </div>
             );
           })}
           </ScrollToBottom>
