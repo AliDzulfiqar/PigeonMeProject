@@ -8,16 +8,20 @@ const socket = io.connect("http://localhost:3001");
 function App() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
+  const [showChat, setShowChat] = useState(false)
 
   const joinRoom = () => {
     if (username !== "" && room !== "") {
       socket.emit("join_room", room);
+      setShowChat(true);
     }
   };
 
+
   return (
-    <div className="app">
-      <section id="create-room">
+  <div className="app">
+      {!showChat ? (
+        <div className="main-page">
         <h1 className="create-room--header">Welcome to PigeonMe!</h1>
         <div className="form-wrapper">
           <input
@@ -32,10 +36,12 @@ function App() {
           />
           <button onClick={joinRoom}>Join Room</button>
         </div>
+        </div>
+      ):(
         <Chat socket={socket} username={username} room={room} />
-      </section>
-    </div>
-  );
+      )};
+  </div>
+  )
 }
 
 export default App;

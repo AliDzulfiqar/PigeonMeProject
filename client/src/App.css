@@ -22,18 +22,6 @@ h1 {
   font-size: 40px;
 }
 
-
-input,
-textarea {
-  width: 100%;
-  color: #000000;
-  outline: none;
-  border: 1px solid #000000;
-  margin: 2px;
-  height: 40px;
-  transition: all 300ms ease;
-}
-
 button {
   width: 100%;
   outline: none;
