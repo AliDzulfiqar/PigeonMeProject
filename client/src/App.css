@@ -109,29 +109,29 @@ button:hover {
   word-break: break-word;
 }
 
-#you {
+#other {
   justify-content: flex-start;
 }
 
-#you .message-content {
+#other .message-content {
   justify-content: flex-start;
 }
 
-#you .message-meta {
+#other .message-meta {
   justify-content: flex-start;
   margin-left: 5px;
 }
 
-#other {
+#sender {
   justify-content: flex-end;
 }
 
-#other .message-content {
+#sender .message-content {
   justify-content: flex-end;
   background-color: cornflowerblue;
 }
 
-#other .message-meta {
+#sender .message-meta {
   justify-content: flex-end;
   margin-right: 5px;
 }
