@@ -131,6 +131,10 @@ button:hover {
   background-color: cornflowerblue;
 }
 
+#sender, #receiver .sent-image {
+  max-width: 100px;
+}
+
 #sender .message-meta {
   justify-content: flex-end;
   margin-right: 5px;
@@ -181,6 +185,8 @@ button:hover {
 .chat-window .chat-footer button:hover {
   color: #43a047;
 }
+
+
 .hide {
   opacity: 0 !important;
 }

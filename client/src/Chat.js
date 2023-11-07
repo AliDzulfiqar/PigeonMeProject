@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import ScrollToBottom from 'react-scroll-to-bottom';
-import { v4 as uuidv4 } from 'uuid';
+import ScrollToBottom from "react-scroll-to-bottom";
+import { v4 as uuidv4 } from "uuid";
 
 function Chat({ socket, username, room }) {
   const [currentMessage, SetCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
+  const [image, setImage] = useState(null);
 
   const sendMessage = async () => {
     if (currentMessage !== "") {
@@ -13,6 +14,7 @@ function Chat({ socket, username, room }) {
         room: room,
         sender: username,
         message: currentMessage,
+        image: image ? URL.createObjectURL(image) : null,
         time:
           new Date(Date.now()).getHours() +
           ":" +
@@ -22,6 +24,7 @@ function Chat({ socket, username, room }) {
       await socket.emit("send_message", messageData);
       setMessageList((list) => [...list, messageData]);
       SetCurrentMessage("");
+      setImage(null);
     }
   };
 
@@ -46,17 +49,24 @@ function Chat({ socket, username, room }) {
               >
                 <div className="message-wrapper">
                   <div className="message-content" key={messageContent.id}>
-                    <p>{messageContent.message}</p>
+                    {messageContent.image && (
+                      <img
+                        src={messageContent.image}
+                        alt="Sent Image"
+                        className="sent-image"
+                      />
+                    )}
+                    {messageContent.message && <p>{messageContent.message}</p>}
                   </div>
                   <div className="message-meta">
                     <p id="time">{messageContent.time}</p>
                     <p id="sender">{messageContent.sender}</p>
                   </div>
                 </div>
-                </div>
+              </div>
             );
           })}
-          </ScrollToBottom>
+        </ScrollToBottom>
       </div>
       <div className="chat-footer">
         <input
@@ -66,7 +76,14 @@ function Chat({ socket, username, room }) {
           onChange={(event) => {
             SetCurrentMessage(event.target.value);
           }}
-          onKeyPress={(event) => {event.key === "Enter" && sendMessage()}} 
+          onKeyPress={(event) => {
+            event.key === "Enter" && sendMessage();
+          }}
+        />
+        <input
+          type="file"
+          accept="image/*"
+          onChange={(event) => setImage(event.target.files[0])}
         />
         <button onClick={sendMessage}>Send</button>
       </div>
