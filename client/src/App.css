@@ -131,8 +131,14 @@ button:hover {
   background-color: cornflowerblue;
 }
 
-#sender, #receiver .sent-image {
+#sender .sent-image {
   max-width: 100px;
+  padding: 5px;
+}
+
+#receiver .sent-image {
+  max-width: 100px;
+  padding: 5px;
 }
 
 #sender .message-meta {

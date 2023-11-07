@@ -8,7 +8,7 @@ function Chat({ socket, username, room }) {
   const [image, setImage] = useState(null);
 
   const sendMessage = async () => {
-    if (currentMessage !== "") {
+    if (currentMessage !== "" || image) {
       const messageData = {
         id: uuidv4(),
         room: room,
@@ -29,9 +29,16 @@ function Chat({ socket, username, room }) {
   };
 
   useEffect(() => {
-    socket.on("receive_message", (message) => {
+    const receiveMessageHandler = (message) => {
       setMessageList((list) => [...list, message]);
-    });
+    };
+
+    socket.on("receive_message", receiveMessageHandler);
+
+    return () => {
+      // Cleanup the event listener when the component unmounts
+      socket.off("receive_message", receiveMessageHandler);
+    };
   }, [socket]);
 
   return (
@@ -50,11 +57,7 @@ function Chat({ socket, username, room }) {
                 <div className="message-wrapper">
                   <div className="message-content" key={messageContent.id}>
                     {messageContent.image && (
-                      <img
-                        src={messageContent.image}
-                        alt="Sent Image"
-                        className="sent-image"
-                      />
+                      <img src={messageContent.image} className="sent-image" />
                     )}
                     {messageContent.message && <p>{messageContent.message}</p>}
                   </div>
