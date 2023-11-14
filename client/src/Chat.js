@@ -44,7 +44,7 @@ function Chat({ socket, username, room }) {
   return (
     <div className="chat-window">
       <div className="chat-header">
-        <p>Chat Now!</p>
+        <p>Room: {room}</p>
       </div>
       <div className="chat-body">
         <ScrollToBottom className="message-container">
@@ -72,7 +72,7 @@ function Chat({ socket, username, room }) {
         </ScrollToBottom>
       </div>
       <div className="chat-footer">
-        <input
+        <input className="input-text"
           type="text"
           value={currentMessage}
           placeholder="Send your message..."
@@ -83,9 +83,8 @@ function Chat({ socket, username, room }) {
             event.key === "Enter" && sendMessage();
           }}
         />
-        <input
+        <input className="input-image"
           type="file"
-          accept="image/*"
           onChange={(event) => setImage(event.target.files[0])}
         />
         <button onClick={sendMessage}>Send</button>
