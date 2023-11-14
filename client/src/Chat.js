@@ -57,7 +57,7 @@ function Chat({ socket, username, room }) {
                 <div className="message-wrapper">
                   <div className="message-content" key={messageContent.id}>
                     {messageContent.image && (
-                      <img src={messageContent.image} className="sent-image" />
+                      <img src={messageContent.image} className="sent-image" alt=""/>
                     )}
                     {messageContent.message && <p>{messageContent.message}</p>}
                   </div>

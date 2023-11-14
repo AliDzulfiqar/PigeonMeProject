@@ -8,7 +8,7 @@ const socket = io.connect("http://localhost:3001");
 function App() {
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
-  const [showChat, setShowChat] = useState(false)
+  const [showChat, setShowChat] = useState(false);
 
   const joinRoom = () => {
     if (username !== "" && room !== "") {
@@ -17,31 +17,30 @@ function App() {
     }
   };
 
-
   return (
-  <div className="app">
+    <div className="app">
       {!showChat ? (
         <div className="main-page">
-        <h1 className="create-room--header">Welcome to PigeonMe!</h1>
-        <div className="form-wrapper">
-          <input
-            type="text"
-            placeholder="Name"
-            onChange={(event) => setUsername(event.target.value)}
-          />
-          <input
-            type="text"
-            placeholder="Room ID"
-            onChange={(event) => setRoom(event.target.value)}
-          />
-          <button onClick={joinRoom}>Join Room</button>
+          <h1 className="create-room--header">PigeonMe!</h1>
+          <div className="form-wrapper">
+            <input
+              type="text"
+              placeholder="Name"
+              onChange={(event) => setUsername(event.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Room ID"
+              onChange={(event) => setRoom(event.target.value)}
+            />
+            <button onClick={joinRoom}>Join Room</button>
+          </div>
         </div>
-        </div>
-      ):(
+      ) : (
         <Chat socket={socket} username={username} room={room} />
       )}
-  </div>
-  )
+    </div>
+  );
 }
 
 export default App;
