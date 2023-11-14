@@ -2,6 +2,7 @@ import "./App.css";
 import io from "socket.io-client";
 import { useState } from "react";
 import Chat from "./Chat";
+import PigeonLogo from "./pigeon.png";
 
 const socket = io.connect("http://localhost:3001");
 
@@ -21,6 +22,7 @@ function App() {
     <div className="app">
       {!showChat ? (
         <div className="main-page">
+          <img src={PigeonLogo} alt="Logo" className="logo"/>
           <h1 className="create-room--header">PigeonMe!</h1>
           <div className="form-wrapper">
             <input

@@ -18,6 +18,8 @@
 
 .main-page {
   width: 300px;
+  text-align: center;
+  align-items: center;
 }
 
 #create-room {
@@ -60,6 +62,10 @@ button:hover {
   flex-direction: column;
   text-align: center;
 } 
+
+.logo {
+  width: 200px;
+}
 
 /* CHAT */
 .chat-window {
