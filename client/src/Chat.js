@@ -2,11 +2,13 @@ import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { v4 as uuidv4 } from "uuid";
 
+// Chat App Functionality
 function Chat({ socket, username, room }) {
   const [currentMessage, SetCurrentMessage] = useState("");
   const [messageList, setMessageList] = useState([]);
   const [image, setImage] = useState(null);
 
+  // Send Message Functionality
   const sendMessage = async () => {
     if (currentMessage !== "" || image) {
       const messageData = {
@@ -21,13 +23,19 @@ function Chat({ socket, username, room }) {
           new Date(Date.now()).getMinutes(),
       };
 
+      // Wait to send message
       await socket.emit("send_message", messageData);
+
+      // Message list to be displayed in chat window
       setMessageList((list) => [...list, messageData]);
+
+      // Set message and image to null so that it refreshes
       SetCurrentMessage("");
       setImage(null);
     }
   };
 
+  // React useEffect to handle receive message
   useEffect(() => {
     const receiveMessageHandler = (message) => {
       setMessageList((list) => [...list, message]);
@@ -36,11 +44,11 @@ function Chat({ socket, username, room }) {
     socket.on("receive_message", receiveMessageHandler);
 
     return () => {
-      // Cleanup the event listener when the component unmounts
       socket.off("receive_message", receiveMessageHandler);
     };
   }, [socket]);
 
+  // Render chat window
   return (
     <div className="chat-window">
       <div className="chat-header">

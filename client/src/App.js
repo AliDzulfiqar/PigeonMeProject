@@ -4,6 +4,7 @@ import { useState } from "react";
 import Chat from "./Chat";
 import PigeonLogo from "./pigeon.png";
 
+// Establish connection with server
 const socket = io.connect("http://localhost:3001");
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
     }
   };
 
+  // Renders the app 
   return (
     <div className="app">
       {!showChat ? (
