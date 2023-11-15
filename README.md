@@ -7,7 +7,10 @@ Designed for CptS 455 - Computer Networks class at Washington State University.
 
 To start:
 
-Open two terminals. One for client and one for server.
+1. Open terminal
+2. Run `npm install`
+
+Now open two terminals. One for client and one for server.
 
 Client:
 1. Run `cd client`
