@@ -3,6 +3,7 @@
   font-family: "Open Sans", sans-serif;
 }
 
+/* MAIN APP */
 .app {
   width: 100vw;
   height: 100vh;
@@ -67,7 +68,7 @@ button:hover {
   width: 200px;
 }
 
-/* CHAT */
+/* CHAT WINDOW */
 .chat-window {
   width: 600px;
 }
@@ -75,6 +76,7 @@ button:hover {
 .chat-window p {
   margin: 0;
 }
+
 .chat-window .chat-header {
   height: 45px;
   border-radius: 6px;
@@ -82,6 +84,7 @@ button:hover {
   position: relative;
   cursor: pointer;
 }
+
 .chat-window .chat-header p {
   display: block;
   padding: 0 1em 0 2em;
@@ -104,9 +107,10 @@ button:hover {
   overflow-x: hidden;
 }
 
-.chat-window .chat-body .message-container::-webkit-scrollbar {
+.message-container::-webkit-scrollbar {
   display: none;
 }
+
 .chat-window .chat-body .message {
   height: auto;
   padding: 10px;
